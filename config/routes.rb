@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,6 +14,9 @@ Rails.application.routes.draw do
 
   match '/register', to: 'users#new', via: 'get'
   match '/register', to: 'users#create', via: 'post'
+  match '/login', to: 'sessions#new', via: 'get'
+  match '/login', to: 'sessions#create', via: 'post'
+  match '/logout', to: 'sessions#destroy', via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

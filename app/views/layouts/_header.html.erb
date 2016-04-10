@@ -7,8 +7,12 @@
 
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'Home', '#' %></li>
-          <li><%= link_to 'Sign in', '#' %></li>
+          <li><%= link_to 'Home', root_path %></li>
+          <% if signed_in? %>
+            <li><%= link_to 'Sign out', logout_path %></li>
+          <% else %>
+            <li><%= link_to 'Sign in', login_path %></li>
+          <% end %>
         </ul>
       </div>
     </div>
