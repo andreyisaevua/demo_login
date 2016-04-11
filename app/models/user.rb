@@ -2,10 +2,18 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
+  validates :email, presence: {message: 'Enter e-mail'},
+                    format: {with: VALID_EMAIL_REGEX, message: 'Please provide valid e-mail address'},
+                    uniqueness: {case_sensitive: false, message: 'This e-mail is already taken'}
 
-  has_secure_password
-  validates :password, length: {minimum: 6}
+  has_secure_password validations: false
+  validates :password, presence: {message: 'Enter password'},
+                       length: {
+                           in: 6..72,
+                           too_short: 'Password must have at least %{count} characters',
+                           too_long: 'Password must have at most %{count} characters'
+                       },
+                       confirmation: {message: 'Passwords do not match', allow_blank: true}
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
