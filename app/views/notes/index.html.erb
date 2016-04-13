@@ -15,7 +15,7 @@
 
 <div class="row">
   <div class="col-md-7">
-    <% if current_user.notes.any? %>
+    <% if current_user && current_user.notes.any? %>
       <h2>My notes (<%= @notes.count %>)</h2>
       <%= render @notes %>
       <%= will_paginate @notes %>
