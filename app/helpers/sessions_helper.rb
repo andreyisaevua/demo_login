@@ -23,11 +23,6 @@ module SessionsHelper
     user == current_user
   end
 
-  def destroy
-    sign_out
-    redirect_to root_path
-  end
-
   def sign_out
     current_user.update_attribute(:remember_token, User.encrypt(User.new_remember_token))
     cookies.delete(:remember_token)

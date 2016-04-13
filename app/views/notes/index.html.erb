@@ -2,9 +2,29 @@
 <div class="center hero-unit">
   <h1>Welcome to the User notes demo app</h1>
 
-  <h2>
-    This is the home page. You will be able to create notes after signing up.
-  </h2>
+  <% unless current_user %>
 
-  <%= link_to 'Sign up', register_path, class: 'btn btn-large btn-primary' %>
+    <h2>
+      This is the home page. You will be able to create notes after signing up.
+    </h2>
+
+    <%= link_to 'Sign up', register_path, class: 'btn btn-large btn-primary' %>
+
+  <% end %>
+
+
+  <% unless @notes.empty? %>
+    <h2>Your notes:</h2>
+
+    <ul>
+      <% @notes.each do |note| %>
+        <li>
+          <h3><%= note[:title] %></h3>
+          <p><%= note[:text] %></p>
+        </li>
+      <% end %>
+    </ul>
+
+  <% end %>
+
 </div>
