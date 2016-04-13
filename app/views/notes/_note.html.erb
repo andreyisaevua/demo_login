@@ -1,0 +1,8 @@
+<div class="row note">
+  <div class="col-md-10">
+    <p><%= note.content %></p>
+  </div>
+  <div class="col-md-2 delete-link">
+    <p><%= link_to 'Delete', note, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
+</div>

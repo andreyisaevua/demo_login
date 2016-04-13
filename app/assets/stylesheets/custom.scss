@@ -100,3 +100,28 @@ label.required:after {
     text-decoration: none;
   }
 }
+
+.navbar li > span {
+  padding: 15px 0;
+  color: #bbb;
+  display: block;
+}
+
+
+/* notes */
+.note {
+  border-bottom: 1px solid $gray-lighter;
+  &:last-child {
+    border: none;
+  }
+
+  .delete-link a {
+    visibility: hidden;
+  }
+  &:hover {
+    background: $gray-lighter;
+    .delete-link a {
+      visibility: visible;
+    }
+  }
+}

@@ -7,7 +7,10 @@
 
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'Home', root_path %></li>
+          <% if current_user %>
+            <li><span><%= current_user.email %></span></li>
+          <% end %>
+
           <% if signed_in? %>
             <li><%= link_to 'Sign out', logout_path %></li>
           <% else %>

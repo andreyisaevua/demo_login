@@ -1,0 +1,5 @@
+<h2>Add a note</h2>
+<%= bootstrap_form_for(@note) do |f| %>
+    <%= f.text_area :content, hide_label: true, rows: 10 %>
+    <%= f.submit 'Add', class: 'btn btn-large btn-primary' %>
+<% end %>
